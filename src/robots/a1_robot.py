@@ -150,7 +150,8 @@ class A1Robot(a1.A1):
 
   @property
   def foot_contacts(self):
-    return np.array(self._raw_state.footForce) > self._contact_force_threshold
+    #return np.array(self._raw_state.footForce) > self._contact_force_threshold
+    return np.array(self._raw_state.footForce) > 20
 
   @property
   def base_position(self):

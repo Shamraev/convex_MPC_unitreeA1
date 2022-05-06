@@ -16,7 +16,7 @@ from src.robots.motors import MotorCommand
 from src.convex_mpc_controller import gait_generator as gait_generator_lib
 
 try:
-  import mpc_osqp as convex_mpc  # pytype: disable=import-error
+  import src.convex_mpc_controller.mpc_osqp as convex_mpc  # pytype: disable=import-error
 except:  #pylint: disable=W0702
   print("You need to install fast_and_efficient")
   print("Run python3 setup.py install --user in this repo")

@@ -4,6 +4,12 @@ from absl import flags
 
 import time
 
+import os
+import inspect
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(os.path.dirname(currentdir))
+os.sys.path.insert(0, parentdir)
+
 from src.robots import gamepad_reader
 from src.convex_mpc_controller import locomotion_controller
 
@@ -11,8 +17,8 @@ from src.convex_mpc_controller import locomotion_controller
 flags.DEFINE_string("logdir", None, "where to log trajectories.")
 flags.DEFINE_bool("use_real_robot", False,
                   "whether to use real robot or simulation")
-flags.DEFINE_bool("show_gui", False, "whether to show GUI.")
-flags.DEFINE_float("max_time_secs", 1., "maximum time to run the robot.")
+flags.DEFINE_bool("show_gui", True, "whether to show GUI.")
+flags.DEFINE_float("max_time_secs", 100., "maximum time to run the robot.")
 FLAGS = flags.FLAGS
 
 
