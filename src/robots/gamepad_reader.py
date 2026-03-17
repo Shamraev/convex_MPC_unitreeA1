@@ -18,7 +18,7 @@ MAX_ABS_VAL = 32768
 ALLOWED_MODES = [
     ControllerMode.STAND, ControllerMode.WALK, ControllerMode.DOWN
 ]
-ALLOWED_GAITS = [GaitType.CRAWL, GaitType.TROT]
+ALLOWED_GAITS = [GaitType.CRAWL, GaitType.TROT, GaitType.STAND, GaitType.PRONK]
 
 
 def _interpolate(raw_reading, max_raw_reading, new_scale):

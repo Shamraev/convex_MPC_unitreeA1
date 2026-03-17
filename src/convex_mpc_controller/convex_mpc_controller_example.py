@@ -42,7 +42,7 @@ def main(argv):
   gamepad = gamepad_reader.Gamepad(vel_scale_x=1,
                                    vel_scale_y=1,
                                    vel_scale_rot=1,
-                                   max_acc=0.3)
+                                   max_acc=0.8)
   controller = locomotion_controller.LocomotionController(
       FLAGS.use_real_robot, FLAGS.show_gui)
 

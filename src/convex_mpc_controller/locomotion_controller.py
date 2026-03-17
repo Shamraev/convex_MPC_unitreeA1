@@ -17,7 +17,7 @@ from src.convex_mpc_controller import com_velocity_estimator
 from src.convex_mpc_controller import offset_gait_generator
 from src.convex_mpc_controller import raibert_swing_leg_controller
 from src.convex_mpc_controller import torque_stance_leg_controller_mpc
-from src.convex_mpc_controller.gait_configs import crawl, trot, flytrot
+from src.convex_mpc_controller.gait_configs import crawl, trot, flytrot, stand, pronk
 from src.robots import a1
 from src.robots import a1_robot
 from src.robots.motors import MotorCommand
@@ -35,6 +35,8 @@ class GaitType(enum.Enum):
   CRAWL = 1
   TROT = 2
   FLYTROT = 3
+  STAND = 4
+  PRONK = 5
 
 
 def get_sim_conf():
@@ -290,9 +292,17 @@ class LocomotionController(object):
     elif self._desired_gait == GaitType.TROT:
       logging.info("Switched  to Trotting gait.")
       self._gait_config = trot.get_config()
+    elif self._desired_gait == GaitType.STAND:
+      logging.info("Switched  to Stand.")
+      self._gait_config = stand.get_config()
+    elif self._desired_gait == GaitType.PRONK:
+      logging.info("Switched  to Pronk.")
+      self._gait_config = pronk.get_config()
     else:
       logging.info("Switched to Fly-Trotting gait.")
       self._gait_config = flytrot.get_config()
+
+
 
     self._gait = self._desired_gait
     self._gait_generator.gait_params = self._gait_config.gait_parameters
